@@ -1,16 +1,18 @@
+version: "3.9"
+
 services:
   db:
     image: postgres:16
     container_name: flowers-db
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: flowers
+      POSTGRES_PASSWORD: postgres
     ports:
-      - "5432:5432"
+      - "5434:5432"   # 5432 ЗАНЯТ ЛОКАЛЬНО → используем 5434
     volumes:
       - ./init:/docker-entrypoint-initdb.d
       - pgdata:/var/lib/postgresql/data
 
 volumes:
   pgdata:
+
